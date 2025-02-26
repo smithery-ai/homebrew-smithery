@@ -6,15 +6,14 @@ class Smithery < Formula
   depends_on "podman"
 
   if OS.mac?
-    url "https://github.com/smithery-ai/runner/releases/download/v#{version}/smithery-macos"
-    sha256 "c9fa81ed027070d9366488e8b86a893e14635898fd01547f29ee5af580ce5fdd"
-  elsif OS.linux?
-    url "https://github.com/smithery-ai/runner/releases/download/v#{version}/smithery-linux"
-    sha256 "d40508f74c8ae620347f6a3455a534492bb85bca5018929ccd1efa9e7c39ccee"
+    url "https://github.com/smithery-ai/runner/releases/download/cli-beta.v0.1.0/smithery-darwin"
+    sha256 "7701472421919c26541e607b79020898a7e1bc5fba318f12165ba3f4ecbe4520"
+  else
+    odie "Smithery is currently only supported on macOS"
   end
 
   def install
-    bin.install Dir["*"].first => "smithery"
+    bin.install "smithery-darwin" => "smithery"
   end
 
   test do
